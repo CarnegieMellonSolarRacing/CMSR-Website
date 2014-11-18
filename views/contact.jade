@@ -1,8 +1,29 @@
 extends layout
 
 block body
+	// facebook javascript sdk
+	div(id="fb-root")
+	script.
+		(function(d, s, id) 
+		{
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+
+	if (typeof(success) != 'undefined') 
+		.row
+			.col-md-12
+				if success 
+					div(class="alert alert-success" role="alert") Your message was successfully sent.
+				else
+					div(class="alert alert-danger" role="alert") Your message failed to send.
+
+
 	.row
-		form(role="form" action="contact/submit" method="post")
+		form(role="form" action="/contact/submit" method="post")
 			.col-lg-6
 				div(class="well well-sm")
 					strong
@@ -11,25 +32,25 @@ block body
 				div(class="form-group")
 					label(for="InputName") Your Name
 					div(class="input-group")
-						input(type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required)
+						input(type="text" class="form-control" name="name" id="name" placeholder="Enter Name" required)
 						span(class="input-group-addon") 
 							span(class="glyphicon glyphicon-ok")
 				div(class="form-group")
 					label(for="InputEmail") Your Email
 					div(class="input-group")
-						input(type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required)
+						input(type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required)
 						span(class="input-group-addon") 
 							span(class="glyphicon glyphicon-ok")
 				div(class="form-group")
 					label(for="InputMessage") Message
 					div(class="input-group")
-						textarea(name="InputMessage" id="InputMessage" class="form-control" rows="5" required)
+						textarea(name="message" id="message" class="form-control" rows="5" required)
 						span(class="input-group-addon")
 							span(class="glyphicon glyphicon-ok")
 				div(class="form-group")
 					label(for="InputReal") What is 4+3? (Simple Spam Checker)
 					div(class="input-group")
-						input(type="text" class="form-control" name="InputReal" id="InputReal" required)
+						input(type="text" class="form-control" name="real" id="real" required)
 						span(class="input-group-addon")
 							span(class="glyphicon glyphicon-ok")
 
@@ -39,19 +60,30 @@ block body
 		
 		div(class="col-lg-5 col-md-push-1")
 			address
-				h3 Information:
+				h2 Keep in Touch
+				hr
+				dl(class="dl-horizontal")
+					dt Phone
+					dd XXX-XXX-XXXX
+
+					dt Mailing Address
+					dd 5000 Forbes Ave, Pittsburgh, PA 15289
+
+					dt Email 
+					dd 
+						a(href="mailto:CMSR-Exec@@gmail.com") CMSR-Exec@gmail.com
+ 
+				hr
 				p(class="lead")
-					a(href="https://www.google.com/maps/place/5000+Forbes+Ave,+Carnegie+Mellon+University,+Pittsburgh,+PA+15213/@40.4410048,-79.9423087,17z/data=!3m1!4b1!4m2!3m1!1s0x8834f223e2a39a91:0xde4e97a9478f1891") Carnegie Mellon University
+					h2 Social Media
+					hr
+					div(style='position:relative; right:0px;' class="fb-like" data-href="https://www.facebook.com/carnegiemellonsolarracing" 
+					data-width="300" data-layout="standard" data-action="like" data-show-faces="true" 
+					data-share="true")
 					br
 					br
-					| Phone: XXX-XXX-XXXX
 					br
-					br
-					| Mailing Address: 
-					br
-					i 5000 Forbes Ave, Pittsburgh, PA 15289
-					br
-					br
-					| Email: 
-					a(href="mailto:CMSR-Exec@@gmail.com") CMSR-Exec@gmail.com
+					| <a href="https://twitter.com/CMUSolarRacing" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @CMUSolarRacing</a>
+					| <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+					hr
 	

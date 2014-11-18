@@ -14,6 +14,34 @@ router.get('/contact', function (req, res) {
   res.render('contact', { title : 'Contact' });
 });
 
+router.post('/contact/submit', function (req, res) {
+	try {
+		var name = req.body.name;
+		var email = req.body.email;
+		var msg = req.body.message;
+		var real = req.body.real;
+
+		// human check
+		if (real == 7) 
+		{
+			var nodemailer = require('nodemailer');
+			var transporter = nodemailer.createTransport();
+			transporter.sendMail({
+			    from: email,
+			    to: 'cmsr-exec@gmail.com',
+			    subject: 'Email from ' + name,
+			    text: msg
+			});
+
+			res.render('contact', { title : 'Contact', success : true});
+		} else {
+			throw new Exception("human check failed");
+		}
+	} catch (e) {
+		res.render('contact', { title : 'Contact', success : false});
+	}
+});
+
 router.get('/sponsors', function (req, res) {
   	fs.readFile("sponsor-data/gold-sponsors.json", function (e1, gold) {
   		fs.readFile("sponsor-data/silver-sponsors.json", function (e2, silver) { 
