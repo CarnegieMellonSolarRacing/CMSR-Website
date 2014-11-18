@@ -1,0 +1,19 @@
+[
+	{
+		"name" : "Raytheon",
+		"image" : "raytheon.png",
+		"link" : "raytheon.com"
+	}, 
+
+	{
+		"name" : "Ford",
+		"image" : "ford.png",
+		"link" : "ford.com"
+	},
+
+	{
+		"name" : "CMU",
+		"image" : "cmu.jpeg",
+		"link" : "cmu.edu"
+	}
+]

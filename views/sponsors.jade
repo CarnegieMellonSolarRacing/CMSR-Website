@@ -1,0 +1,52 @@
+extends layout
+
+block body
+	style.
+		.panel-heading {
+			text-align: center;
+		}
+
+		.panel-body {
+			height: 100%;
+		}
+
+	h1(style="margin-top:5px")
+		| Our Sponsors
+
+	hr
+
+	div(class="panel panel-warning")
+		.panel-heading Gold Tier
+		.panel-body
+			div(class="row")
+				each sponsor in gold
+					.col-md-4
+						div(class="panel panel-warning")
+							.panel-body
+								a(href= sponsor.link)
+									img(height="200px" width="100%" src="images/sponsors/" + sponsor.image)
+				
+	div(class="panel panel-default")
+		.panel-heading Silver Tier
+		.panel-body
+			div(class="row")
+				each sponsor in silver
+					.col-md-4
+						div(class="panel panel-default")
+							.panel-body
+								a(href= sponsor.link)
+									img(height="200px" width="100%" src="images/sponsors/" + sponsor.image)
+	
+	div(class="panel panel-info")
+		.panel-heading Bronze Tier
+		.panel-body
+			div(class="row")
+				each sponsor in bronze
+					.col-md-4
+						div(class="panel panel-info")
+							.panel-body
+								a(href= sponsor.link)
+									img(height="200px" width="100%" src="images/sponsors/" + sponsor.image)
+				
+			
+	

@@ -1,0 +1,57 @@
+extends layout
+
+block body
+	.row
+		form(role="form" action="contact/submit" method="post")
+			.col-lg-6
+				div(class="well well-sm")
+					strong
+						span(class="glyphicon glyphicon-ok") 
+					|   Required Field
+				div(class="form-group")
+					label(for="InputName") Your Name
+					div(class="input-group")
+						input(type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required)
+						span(class="input-group-addon") 
+							span(class="glyphicon glyphicon-ok")
+				div(class="form-group")
+					label(for="InputEmail") Your Email
+					div(class="input-group")
+						input(type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required)
+						span(class="input-group-addon") 
+							span(class="glyphicon glyphicon-ok")
+				div(class="form-group")
+					label(for="InputMessage") Message
+					div(class="input-group")
+						textarea(name="InputMessage" id="InputMessage" class="form-control" rows="5" required)
+						span(class="input-group-addon")
+							span(class="glyphicon glyphicon-ok")
+				div(class="form-group")
+					label(for="InputReal") What is 4+3? (Simple Spam Checker)
+					div(class="input-group")
+						input(type="text" class="form-control" name="InputReal" id="InputReal" required)
+						span(class="input-group-addon")
+							span(class="glyphicon glyphicon-ok")
+
+				input(type="submit" name="submit" id="submit" value="Submit" class="btn btn-info pull-right")
+		
+		hr(class="featurette-divider hidden-lg")
+		
+		div(class="col-lg-5 col-md-push-1")
+			address
+				h3 Information:
+				p(class="lead")
+					a(href="https://www.google.com/maps/place/5000+Forbes+Ave,+Carnegie+Mellon+University,+Pittsburgh,+PA+15213/@40.4410048,-79.9423087,17z/data=!3m1!4b1!4m2!3m1!1s0x8834f223e2a39a91:0xde4e97a9478f1891") Carnegie Mellon University
+					br
+					br
+					| Phone: XXX-XXX-XXXX
+					br
+					br
+					| Mailing Address: 
+					br
+					i 5000 Forbes Ave, Pittsburgh, PA 15289
+					br
+					br
+					| Email: 
+					a(href="mailto:CMSR-Exec@@gmail.com") CMSR-Exec@gmail.com
+	
