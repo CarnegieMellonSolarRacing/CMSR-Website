@@ -1,27 +1,68 @@
 extends layout
 
 block body
-	link(href="/stylesheets/gallery.css" rel="stylesheet")
+	// link(href="/stylesheets/gallery.css" rel="stylesheet")
+	link(rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css")
+	link(rel="stylesheet" href="/stylesheets/bootstrap-image-gallery.min.css")
 
 	h1 Gallery 
 
+	div(id="loading-space" style="left:125px; bottom:25px; position:relative; width: 100px;")
+
 	hr
 
-	div(id="images")
-		.image-zoom-container
-			each image in images
-				.zoom-container
-					a
-						img(src="images/gallery/" + image)
+	div(id="links")
+		each image in images
+			a(href="images/gallery/" + image title=image data-gallery)
+				img(src="images/gallery/" + image width=150 alt="Banana")
+
+	div(id="images").
+		<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+		<div id="blueimp-gallery" class="blueimp-gallery">
+		    <!-- The container for the modal slides -->
+		    <div class="slides"></div>
+		    <!-- Controls for the borderless lightbox -->
+		    <h3 class="title"></h3>
+		    <a class="prev">‹</a>
+		    <a class="next">›</a>
+		    <a class="close">×</a>
+		    <a class="play-pause"></a>
+		    <ol class="indicator"></ol>
+		    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+		    <div class="modal fade">
+		        <div class="modal-dialog">
+		            <div class="modal-content">
+		                <div class="modal-header">
+		                    <button type="button" class="close" aria-hidden="true">&times;</button>
+		                    <h4 class="modal-title"></h4>
+		                </div>
+		                <div class="modal-body next"></div>
+		                <div class="modal-footer">
+		                    <button type="button" class="btn btn-default pull-left prev">
+		                        <i class="glyphicon glyphicon-chevron-left"></i>
+		                        Previous
+		                    </button>
+		                    <button type="button" class="btn btn-primary next">
+		                        Next
+		                        <i class="glyphicon glyphicon-chevron-right"></i>
+		                    </button>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>	
+
+	script(src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js")
+	script(src="/javascripts/bootstrap-image-gallery.min.js")
 
 	script.
 		$(function() {
-			var target = $('#images')[0];
+			var target = $('#loading-space')[0];
 			var opts = {
-			  lines: 13, // The number of lines to draw
-			  length: 20, // The length of each line
-			  width: 10, // The line thickness
-			  radius: 20, // The radius of the inner circle
+			  lines: 10, // The number of lines to draw
+			  length: 5, // The length of each line
+			  width: 3, // The line thickness
+			  radius: 5, // The radius of the inner circle
 			  corners: 1, // Corner roundness (0..1)
 			  rotate: 0, // The rotation offset
 			  direction: 1, // 1: clockwise, -1: counterclockwise
@@ -32,15 +73,13 @@ block body
 			  hwaccel: false, // Whether to use hardware acceleration
 			  className: 'spinner', // The CSS class to assign to the spinner
 			  zIndex: 2e9, // The z-index (defaults to 2000000000)
-			  top: '70%', // Top position relative to parent
+			  top: '50%', // Top position relative to parent
 			  left: '50%' // Left position relative to parent
 			};
 
-			$(".image-zoom-container").hide();
 			var spinner = new Spinner(opts).spin(target);
 
 			$(window).load(function() {
-				$(".image-zoom-container").show();
 				spinner.stop();
 			});
 		});

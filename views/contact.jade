@@ -17,9 +17,13 @@ block body
 		.row
 			.col-md-12
 				if success 
-					div(class="alert alert-success" role="alert") Your message was successfully sent.
+					div(class="alert alert-success" role="alert") 
+						strong Thank you! 
+						| Your message was successfully sent.
 				else
-					div(class="alert alert-danger" role="alert") Your message failed to send.
+					div(class="alert alert-danger" role="alert") 
+						strong Oops! 
+						| Your message failed to send. Try again later or contact our web team.
 
 
 	.row
@@ -71,7 +75,7 @@ block body
 
 					dt Email 
 					dd 
-						a(href="mailto:CMSR-Exec@@gmail.com") CMSR-Exec@gmail.com
+						a(href="mailto:cmsr.executive@@gmail.com") CMSR-Exec@gmail.com
  
 				hr
 				p(class="lead")

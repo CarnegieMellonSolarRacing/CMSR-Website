@@ -28,7 +28,7 @@ router.post('/contact/submit', function (req, res) {
 			var transporter = nodemailer.createTransport();
 			transporter.sendMail({
 			    from: email,
-			    to: 'cmsr-exec@gmail.com',
+			    to: 'cmsr.exec@gmail.com',
 			    subject: 'Email from ' + name,
 			    text: msg
 			});
