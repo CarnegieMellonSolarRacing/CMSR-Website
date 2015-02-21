@@ -5,7 +5,7 @@ block body
 	link(rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css")
 	link(rel="stylesheet" href="/stylesheets/bootstrap-image-gallery.min.css")
 
-	h1 Gallery 
+	h1 Gallery : #{subfolder}
 
 	div(id="loading-space" style="left:125px; bottom:25px; position:relative; width: 100px;")
 
@@ -13,8 +13,8 @@ block body
 
 	div(id="links")
 		each image in images
-			a(href="images/gallery/" + image title=image data-gallery)
-				img(src="images/gallery/" + image width=150 alt="Banana")
+			a(href="/images/gallery/" + image title=image data-gallery)
+				img(src="/images/gallery/" + image width=150 alt="Banana")
 
 	div(id="images").
 		<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->

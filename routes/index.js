@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+var path = require('path');
 
 router.get('/history', function (req, res) {
   res.render('history', { title : 'History' });
@@ -61,13 +62,67 @@ function endsWith(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
 }
 
+function getDirectories(srcpath) {
+  return fs.readdirSync(srcpath).filter(function(file) {
+    return fs.statSync(path.join(srcpath, file)).isDirectory();
+  });
+}
+    
+
 router.get('/gallery', function (req, res) {
-  var allFiles = fs.readdir('public/images/gallery', function(err, files) {
-  	  var imageNames = files.filter(function (str) {
-  	  	return endsWith(str, ".jpg") || endsWith(str, ".png") || endsWith(str, ".jpeg");
-  	  });
-  	  res.render('gallery', { title : 'Gallery', images : imageNames});
-  	});
+	var dirs = getDirectories("public/images/gallery");
+
+	var repName = "representative.jpg";
+
+	var dirsWithReps = [];
+	for (i in dirs) 
+	{
+		var dir = dirs[i];
+		// check for flagged image (one with name "representative.jpg")
+		if (fs.existsSync("public/images/gallery/" + dir + "/" + repName))
+		{
+			dirsWithReps.push({ folder : dir, representativePath : dir + "/" + repName});
+		} 
+		else 
+		{
+			// try to get first image if it exists
+			var allFiles = fs.readdirSync("public/images/gallery/" + dir + "/");
+			
+			var imageNames = allFiles.filter(function (str) {
+				return endsWith(str, ".jpg") || endsWith(str, ".png") || endsWith(str, ".jpeg");
+			});
+
+			if (imageNames.length > 0)
+			{
+				console.log("pushin'")
+				dirsWithReps.push({ folder : dir, representativePath : dir + "/" + imageNames[0]});
+			}
+			
+		}
+	}
+
+	console.log(dirsWithReps);
+
+	res.render('gallery-list', { subfolders : dirsWithReps });
+});
+
+router.get('/gallery/*', function (req, res) {
+	// suffix of URL 
+	var folder = req.params['0'];
+
+	var allFiles = fs.readdir('public/images/gallery/' + folder + "/", function(err, files) {
+	  	var imageNames = files.filter(function (str) {
+			return endsWith(str, ".jpg") || endsWith(str, ".png") || endsWith(str, ".jpeg");
+		});
+
+	  	var namesWithPath = imageNames.map(function (path) {
+	  		return folder + "/" + path;
+	  	});
+
+		res.render('gallery-view', 
+			{ title : 'Gallery', subfolder : folder, 
+			images : namesWithPath});
+	});
 });
 
 /* GET home page. */

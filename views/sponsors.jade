@@ -13,38 +13,66 @@ block body
 	h1(style="margin-top:5px")
 		| Our Sponsors
 
+
+	p.
+		Building a completely solar-powered boat is hard and it's expensive. 
+		We wouldn't be where we are now without the incredibly gracious help
+		of our many sponsors. From generous financial contributions to the 
+		donation of industrial experience and engineering expertise, our sponsors
+		contribute invaluable resources to the team. 
+
 	hr
-	div(class="panel panel-warning")
-		.panel-heading Gold Tier
-		.panel-body
-			div(class="row")
-				each sponsor in gold
-					.col-md-4
-						div(class="panel panel-warning")
-							.panel-body
-								a(href= sponsor.link)
-									img(height="200px" width="100%" src="images/sponsors/" + sponsor.image)
-				
+
 	div(class="panel panel-default")
-		.panel-heading Silver Tier
+		.panel-heading CMSR Sponsors
 		.panel-body
-			div(class="row")
-				each sponsor in silver
-					.col-md-4
-						div(class="panel panel-default")
-							.panel-body
-								a(href= sponsor.link)
-									img(height="200px" width="100%" src="images/sponsors/" + sponsor.image)
+			.row
+				.col-md-6
+					img(src="images/sponsors/ford_logo.jpg" class="center-block" width="70%")
+
+				.col-md-6
+					img(src="images/sponsors/raytheon.png" style="padding-top:80px" class="center-block" width="80%")
+
+	.well
+		|	Interested in becoming a sponsor of CMSR? We'd love to talk with you!
+		|	Send an email to us at  
+		a(href="ssealey@@gmail.com") ssealey@gmail.com
+
 	
-	div(class="panel panel-info")
-		.panel-heading Bronze Tier
-		.panel-body
-			div(class="row")
-				each sponsor in bronze
-					.col-md-4
-						div(class="panel panel-info")
-							.panel-body
-								a(href= sponsor.link)
-									img(height="200px" width="100%" src="images/sponsors/" + sponsor.image)
+	//- TIERS
+	//- hr
+	//- div(class="panel panel-warning")
+	//- 	.panel-heading Gold Tier
+	//- 	.panel-body
+	//- 		div(class="row")
+	//- 			each sponsor in gold
+	//- 				.col-md-4
+	//- 					div(class="panel panel-warning")
+	//- 						.panel-body
+	//- 							a(href= sponsor.link)
+	//- 								img(height="200px" width="100%" src="images/sponsors/" + sponsor.image)
+				
+	
+	//- div(class="panel panel-default")
+	//- 	.panel-heading Silver Tier
+	//- 	.panel-body
+	//- 		div(class="row")
+	//- 			each sponsor in silver
+	//- 				.col-md-4
+	//- 					div(class="panel panel-default")
+	//- 						.panel-body
+	//- 							a(href= sponsor.link)
+	//- 								img(height="200px" width="100%" src="images/sponsors/" + sponsor.image)
+	
+	//- div(class="panel panel-info")
+	//- 	.panel-heading Bronze Tier
+	//- 	.panel-body
+	//- 		div(class="row")
+	//- 			each sponsor in bronze
+	//- 				.col-md-4
+	//- 					div(class="panel panel-info")
+	//- 						.panel-body
+	//- 							a(href= sponsor.link)
+	//- 								img(height="200px" width="100%" src="images/sponsors/" + sponsor.image)
 			
-	
+	//- 
