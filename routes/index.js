@@ -112,7 +112,8 @@ router.get('/gallery/*', function (req, res) {
 
 	var allFiles = fs.readdir('public/images/gallery/' + folder + "/", function(err, files) {
 	  	var imageNames = files.filter(function (str) {
-			return endsWith(str, ".jpg") || endsWith(str, ".png") || endsWith(str, ".jpeg");
+			return endsWith(str, ".jpg") || endsWith(str, ".png") || endsWith(str, ".jpeg")
+			|| endsWith(str, ".JPG") || endsWith(str, ".PNG") || endsWith(str, ".JPEG");
 		});
 
 	  	var namesWithPath = imageNames.map(function (path) {

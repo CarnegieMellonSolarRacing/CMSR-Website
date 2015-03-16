@@ -5,9 +5,16 @@ block body
 	link(rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css")
 	link(rel="stylesheet" href="/stylesheets/bootstrap-image-gallery.min.css")
 
-	h1 Gallery : #{subfolder}
-
-	div(id="loading-space" style="left:125px; bottom:25px; position:relative; width: 100px;")
+	.row
+		.col-md-2(style="padding-top:20px")
+			a(href="/gallery")
+				button(type="button" class="btn btn-default")
+					span(class="glyphicon glyphicon-chevron-left" aria-hidden="true")
+					| &nbsp;Back to Events
+		.col-md-7
+			h1 Gallery : #{subfolder}
+		.col-md-3(style="padding-top:20px")
+			div(id="loading-space" style="width: 100px;")
 
 	hr
 
